@@ -8,6 +8,7 @@ import br.com.fatec.fretenetapi.controller.dto.response.HowMuchResponse;
 import br.com.fatec.fretenetapi.entity.Frete;
 import br.com.fatec.fretenetapi.repository.FreteRepository;
 import br.com.fatec.fretenetapi.service.FreteService;
+import jakarta.validation.Valid;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class FreteController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/frete")
-    public FreteResponse save(@RequestBody FreteRequest request) {
+    public FreteResponse save(@Valid @RequestBody FreteRequest request) {
         Frete frete = FreteControllerAdapter.cast(request);
         return FreteControllerAdapter.cast(service.register(frete));
     }

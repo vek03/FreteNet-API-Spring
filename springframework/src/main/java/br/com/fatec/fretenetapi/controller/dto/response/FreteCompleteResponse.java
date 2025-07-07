@@ -1,21 +1,14 @@
 package br.com.fatec.fretenetapi.controller.dto.response;
 
-import br.com.fatec.fretenetapi.entity.Estado;
+import br.com.fatec.fretenetapi.entity.Endereco;
 
 import java.math.BigDecimal;
 
 public record FreteCompleteResponse(
         String id,
         String idCliente,
-        String nomeCliente,
-        String emailCliente,
         BigDecimal valorFrete,
         String status,
-        String cep,
-        String logradouro,
-        String complemento,
-        String bairro,
-        String localidade,
-        String uf
+        Endereco endereco
 ) {
 }

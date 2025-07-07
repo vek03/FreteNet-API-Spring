@@ -41,16 +41,9 @@ public class FreteService {
             return repository.save(new Frete(
                     id,
                     frete.idCliente(),
-                    frete.nomeCliente(),
-                    frete.emailCliente(),
-                    valorFrete(frete.uf()),
+                    valorFrete(frete.endereco().uf()),
                     frete.status(),
-                    frete.cep(),
-                    frete.logradouro(),
-                    frete.complemento(),
-                    frete.bairro(),
-                    frete.localidade(),
-                    frete.uf()
+                    frete.endereco()
             ));
         } catch (UnprocessableEntityException ex) {
             throw ex;

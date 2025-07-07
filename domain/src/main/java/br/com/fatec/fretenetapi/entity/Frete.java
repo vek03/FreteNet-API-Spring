@@ -7,11 +7,6 @@ public record Frete(
         String idCliente,
         BigDecimal valorFrete,
         Status status,
-        String cep,
-        String logradouro,
-        String complemento,
-        String bairro,
-        String localidade,
-        Estado uf
+        Endereco endereco
 ) {
 }

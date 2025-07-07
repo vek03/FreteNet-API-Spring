@@ -4,6 +4,7 @@ import br.com.fatec.fretenetapi.controller.dto.request.FreteRequest;
 import br.com.fatec.fretenetapi.controller.dto.response.FreteCompleteResponse;
 import br.com.fatec.fretenetapi.controller.dto.response.FreteResponse;
 import br.com.fatec.fretenetapi.controller.dto.response.HowMuchResponse;
+import br.com.fatec.fretenetapi.entity.Endereco;
 import br.com.fatec.fretenetapi.entity.Estado;
 import br.com.fatec.fretenetapi.entity.Frete;
 import br.com.fatec.fretenetapi.entity.Status;
@@ -28,12 +29,7 @@ public class FreteControllerAdapter {
                 frete.idCliente(),
                 frete.valorFrete(),
                 frete.status().getDescricao(),
-                frete.cep(),
-                frete.logradouro(),
-                frete.complemento(),
-                frete.bairro(),
-                frete.localidade(),
-                frete.uf().getUf()
+                frete.endereco()
         );
     }
 
@@ -43,12 +39,14 @@ public class FreteControllerAdapter {
                 request.idCliente(),
                 BigDecimal.ZERO,
                 Status.PROCESSANDO,
-                request.cep(),
-                request.logradouro(),
-                request.complemento(),
-                request.bairro(),
-                request.localidade(),
-                Estado.porUf(request.uf())
+                new Endereco(
+                    request.cep(),
+                    request.logradouro(),
+                    request.complemento(),
+                    request.bairro(),
+                    request.localidade(),
+                    Estado.porUf(request.uf())
+                )
         );
     }
 
@@ -56,9 +54,5 @@ public class FreteControllerAdapter {
         return new HowMuchResponse(
                 valorFrete
         );
-    }
-
-    public static BigDecimal cast(HowMuchResponse response){
-        return response.valorFrete();
     }
 }

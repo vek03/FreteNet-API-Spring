@@ -41,8 +41,6 @@ public class FreteService {
             return repository.save(new Frete(
                     id,
                     frete.idCliente(),
-                    frete.nomeCliente(),
-                    frete.emailCliente(),
                     valorFrete(frete.uf()),
                     frete.status(),
                     frete.cep(),

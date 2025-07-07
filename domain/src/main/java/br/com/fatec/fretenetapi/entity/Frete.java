@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 public record Frete(
         String id,
         String idCliente,
-        String nomeCliente,
-        String emailCliente,
         BigDecimal valorFrete,
         Status status,
         String cep,

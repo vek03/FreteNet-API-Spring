@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 public record FreteCompleteResponse(
         String id,
         String idCliente,
-        String nomeCliente,
-        String emailCliente,
         BigDecimal valorFrete,
         String status,
         String cep,

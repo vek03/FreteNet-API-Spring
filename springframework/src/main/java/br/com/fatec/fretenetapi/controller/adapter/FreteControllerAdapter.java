@@ -18,7 +18,6 @@ public class FreteControllerAdapter {
         return new FreteResponse(
                 frete.id(),
                 frete.idCliente(),
-                frete.nomeCliente(),
                 frete.valorFrete()
         );
     }
@@ -27,8 +26,6 @@ public class FreteControllerAdapter {
         return new FreteCompleteResponse(
                 frete.id(),
                 frete.idCliente(),
-                frete.nomeCliente(),
-                frete.emailCliente(),
                 frete.valorFrete(),
                 frete.status().getDescricao(),
                 frete.cep(),
@@ -44,8 +41,6 @@ public class FreteControllerAdapter {
         return new Frete(
                 UUID.randomUUID().toString(),
                 request.idCliente(),
-                request.nomeCliente(),
-                request.emailCliente(),
                 BigDecimal.ZERO,
                 Status.PROCESSANDO,
                 request.cep(),

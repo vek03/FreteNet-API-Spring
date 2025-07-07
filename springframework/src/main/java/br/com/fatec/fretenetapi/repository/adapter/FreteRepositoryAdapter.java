@@ -11,8 +11,6 @@ public class FreteRepositoryAdapter {
         return new FreteOrm(
                 frete.id(),
                 frete.idCliente(),
-                frete.nomeCliente(),
-                frete.emailCliente(),
                 frete.valorFrete(),
                 frete.status(),
                 frete.cep(),
@@ -28,8 +26,6 @@ public class FreteRepositoryAdapter {
         return new Frete(
                 orm.id(),
                 orm.idCliente(),
-                orm.nomeCliente(),
-                orm.emailCliente(),
                 orm.valorFrete(),
                 orm.status(),
                 orm.cep(),

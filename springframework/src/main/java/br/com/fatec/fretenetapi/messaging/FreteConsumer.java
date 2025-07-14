@@ -45,7 +45,7 @@ public class FreteConsumer {
         try {
             LOG.info("Pedido de frete: {}", pedido);
 
-            Frete freteCriado = this.service.register(FreteConsumerAdapter.cast(pedido));
+            Frete freteCriado = service.register(FreteConsumerAdapter.cast(pedido));
 
             LOG.info("Pedido de frete {} Criado!", freteCriado.id());
         } catch (Exception ex) {

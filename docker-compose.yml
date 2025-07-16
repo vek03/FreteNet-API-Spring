@@ -33,24 +33,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 12
-  pedido:
-    image: fretenet/pedido:latest
-    hostname: pedido
-    container_name: pedido
-    ports:
-      - "8083:8083"
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      RABBITMQ_HOST: rabbitmq
-      RABBITMQ_PORT: 5672
-      RABBITMQ_USERNAME: guest
-      RABBITMQ_PASSWORD: guest
-      MONGODB_URL: mongodb://mongodb:27017/fretenetapi
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-      mongodb:
-        condition: service_started
-      redis:
-        condition: service_started

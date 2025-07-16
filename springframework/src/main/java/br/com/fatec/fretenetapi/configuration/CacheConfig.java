@@ -20,9 +20,8 @@ public class CacheConfig {
     @Bean
     public LettuceConnectionFactory redisConnectionFactory(
             @Value("${spring.redis.host}") String host,
-            @Value("${spring.redis.port}") Integer port
-    ){
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+            @Value("${spring.redis.port}") Integer port) {
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(host, port);
         return new LettuceConnectionFactory(config);
     }
 

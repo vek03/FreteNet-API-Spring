@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/fretenetapi/v1")
+@RequestMapping("/fretenet/v1")
 public class FreteController {
     private final FreteRepository repository;
     private final FreteService service;
@@ -25,27 +25,27 @@ public class FreteController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/frete")
+    @PostMapping("/order")
     public FreteResponse save(@Valid @RequestBody FreteRequest request) {
         Frete frete = FreteControllerAdapter.cast(request);
         return FreteControllerAdapter.cast(service.register(frete));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/frete/{id}")
+    @GetMapping("/order/{id}")
     public FreteCompleteResponse getById(@PathVariable("id") String id) {
         return FreteControllerAdapter.castComplete(repository.findById(id));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/frete/how-much/{uf}")
+    @GetMapping("/order/how-much/{uf}")
     @Cacheable(value = "frete-cache", key = "#uf")
     public HowMuchResponse howMuch(@PathVariable("uf") String uf) {
         return FreteControllerAdapter.cast(service.howMuch(uf));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/frete/{id}")
+    @DeleteMapping("/order/{id}")
     public void delete(@PathVariable("id") String id) {
         repository.delete(id);
     }
